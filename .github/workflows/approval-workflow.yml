@@ -1,0 +1,13 @@
+name: Team Approval Workflow
+on: pull_request_review
+
+jobs:
+  labelWhenApproved:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "pullreminders/label-when-approved-action"
+        env: 
+          APPROVALS: 1
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          ADD_LABEL: "Approved"
+          REMOVE_LABEL: "awaiting%20review"
